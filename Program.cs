@@ -12,7 +12,8 @@ internal static class Program
     {
         try
         {
-            string[] strArray = RuntimeEnvironment.GetSystemVersion().Trim(new char[] { 'v' }).Split(new char[] { '.' });
+            string version = RuntimeEnvironment.GetSystemVersion();
+            string[] strArray = version.Trim(new char[] { 'v' }).Split(new char[] { '.' });
             if (strArray.Length > 0)
             {
                 int num;
@@ -23,9 +24,14 @@ internal static class Program
                     return;
                 }
             }
+            else
+            {
+                MessageBox.Show("需安装 .NET Framework 。");
+            }
         }
-        catch
+        catch (Exception e)
         {
+            MessageBox.Show(e.Message);
         }
         SingletonApplication instance = SingletonApplication.GetInstance(Application.ProductVersion, args);
         if (instance.Register())
