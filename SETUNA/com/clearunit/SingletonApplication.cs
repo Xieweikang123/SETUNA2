@@ -51,8 +51,6 @@
                 IpcChannel chnl = new IpcChannel(productName);
                 ChannelServices.RegisterChannel(chnl, true);
                 RemotingConfiguration.RegisterWellKnownServiceType(typeof(SingletonAppRemoteObject), productName + "RemoteObject.rem", WellKnownObjectMode.Singleton);
-
-
                 return true;
             }
             catch
@@ -70,7 +68,7 @@
                     if (_instance == null)
                     {
                         _instance = new SingletonApplication();
-                    } 
+                    }
                 }
             }
             _instance._args = args;
