@@ -12,6 +12,7 @@ internal static class Program
     {
         try
         {
+
             string[] strArray = RuntimeEnvironment.GetSystemVersion().Trim(new char[] { 'v' }).Split(new char[] { '.' });
             if (strArray.Length > 0)
             {
@@ -36,6 +37,7 @@ internal static class Program
             instance.AddSingletonFormListener(implement);
             implement.CommandRun(args);
             Application.Run(implement);
+            
         }
     }
 }

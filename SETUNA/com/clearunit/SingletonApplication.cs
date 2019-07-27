@@ -17,6 +17,22 @@
         private SingletonApplication()
         {
         }
+        public static SingletonApplication GetInstance(string version, string[] args)
+        {
+            if (_instance == null)
+            {
+                lock (lockObj)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new SingletonApplication();
+                    }
+                }
+            }
+            _instance._args = args;
+            _instance._version = version;
+            return _instance;
+        }
 
         public void AddSingletonFormListener(ISingletonForm implement)
         {
@@ -39,7 +55,7 @@
             }
             catch
             {
-                Console.WriteLine("CreateClient Error");
+                Console.WriteLine("Create Client Error");
             }
         }
 
@@ -59,23 +75,11 @@
             }
         }
 
-        public static SingletonApplication GetInstance(string version, string[] args)
-        {
-            if (_instance == null)
-            {
-                lock (lockObj)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new SingletonApplication();
-                    }
-                }
-            }
-            _instance._args = args;
-            _instance._version = version;
-            return _instance;
-        }
-
+     
+        /// <summary>
+        /// 注册服务器成功否？
+        /// </summary>
+        /// <returns></returns>
         public bool Register()
         {
             if (this.CreateServer())
