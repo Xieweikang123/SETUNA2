@@ -36,7 +36,8 @@
 
         public void AddSingletonFormListener(ISingletonForm implement)
         {
-            SingletonAppRemoteObject.Event = (SingletonAppRemoteObject.StartupDelegate) Delegate.Combine(SingletonAppRemoteObject.Event, new SingletonAppRemoteObject.StartupDelegate(implement.DetectExternalStartup));
+            SingletonAppRemoteObject.Event = (SingletonAppRemoteObject.StartupDelegate)Delegate.Combine(SingletonAppRemoteObject.Event, new SingletonAppRemoteObject.StartupDelegate(implement.DetectExternalStartup));
+            
         }
 
         private void CreateClient()
@@ -75,7 +76,7 @@
             }
         }
 
-     
+
         /// <summary>
         /// 注册服务器成功否？
         /// </summary>

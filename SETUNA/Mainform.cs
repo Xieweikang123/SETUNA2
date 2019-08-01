@@ -37,7 +37,7 @@
         private ToolStripMenuItem testToolStripMenuItem;
         private Timer timPool;
         private Button button4;
-        private Button button1;
+        private Button btnCapture;
         private ToolTip toolTip1;
 
         public Mainform()
@@ -63,8 +63,12 @@
             this._imgpool.Enqueue(src);
             this.timPool.Start();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 开始截取
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCapture_Click(object sender, EventArgs e)
         {
             this.StartCapture();
         }
@@ -312,7 +316,7 @@
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCapture = new System.Windows.Forms.Button();
             this.subMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -342,12 +346,12 @@
             this.testToolStripMenuItem});
             this.subMenu.Name = "subMenu";
             this.subMenu.Scrap = null;
-            this.subMenu.Size = new System.Drawing.Size(139, 44);
+            this.subMenu.Size = new System.Drawing.Size(107, 28);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(138, 40);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.testToolStripMenuItem.Text = "test";
             // 
             // toolTip1
@@ -364,34 +368,34 @@
             this.button4.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.button4.ForeColor = System.Drawing.Color.Gray;
             this.button4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button4.Location = new System.Drawing.Point(368, 0);
+            this.button4.Location = new System.Drawing.Point(378, 0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(154, 121);
+            this.button4.Size = new System.Drawing.Size(154, 153);
             this.button4.TabIndex = 1;
             this.button4.Text = "选项";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button1
+            // btnCapture
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button1.ForeColor = System.Drawing.Color.Gray;
-            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(368, 121);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "截取";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCapture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCapture.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnCapture.ForeColor = System.Drawing.Color.Gray;
+            this.btnCapture.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCapture.Location = new System.Drawing.Point(0, 0);
+            this.btnCapture.Name = "btnCapture";
+            this.btnCapture.Size = new System.Drawing.Size(378, 153);
+            this.btnCapture.TabIndex = 0;
+            this.btnCapture.Text = "截取";
+            this.btnCapture.UseVisualStyleBackColor = true;
+            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
             // 
             // Mainform
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(522, 121);
+            this.ClientSize = new System.Drawing.Size(532, 153);
             this.ContextMenuStrip = this.setunaIconMenu;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCapture);
             this.Controls.Add(this.button4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -419,7 +423,7 @@
                 }
                 else
                 {
-                    System.Type[] allType = SetunaOption.GetAllType();
+                    Type[] allType = SetunaOption.GetAllType();
                     XmlSerializer serializer = new XmlSerializer(typeof(SetunaOption), allType);
                     FileStream stream = new FileStream(configFile, FileMode.Open);
                     this.optSetuna = (SetunaOption)serializer.Deserialize(stream);
@@ -848,8 +852,7 @@
         {
             get
             {
-                return
-                this._iscapture;
+                return  this._iscapture;
             }
             set
             {
@@ -896,6 +899,8 @@
         }
 
         private delegate void ExternalStartupDelegate(string version, string[] args);
+
+  
     }
 }
 

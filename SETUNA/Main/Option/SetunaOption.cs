@@ -90,7 +90,10 @@
             }
             return typeArray2;
         }
-
+        /// <summary>
+        /// 默认参数
+        /// </summary>
+        /// <returns></returns>
         public static SetunaOption GetDefaultOption()
         {
             SetunaOption option = new SetunaOption();
@@ -757,12 +760,16 @@
                 Console.WriteLine(this.ApplicationVersion);
             }
         }
-
+        /// <summary>
+        /// 获取配置文件路径
+        /// </summary>
         public static string ConfigFile
         {
             get
             {
-                string fullPath = Path.GetFullPath(Path.Combine(Application.StartupPath, ""));
+
+                //string fullPath = Path.GetFullPath(Path.Combine(Application.StartupPath, ""));
+                string fullPath = Path.GetFullPath(Application.StartupPath);
                 if (!Directory.Exists(fullPath))
                 {
                     Directory.CreateDirectory(fullPath);
